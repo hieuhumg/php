@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    
+
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    
-    
+
+
 </head>
 
 <body>
@@ -21,7 +21,9 @@
                 "title": "Cha c\u1ee7a Daniel James \u0111\u1ed9t ng\u1ed9t qua \u0111\u1eddi, th\u01b0\u01a1ng v\u1ee5 sang M.U t\u1ea1m ho\u00e3n",
                 "img": "http:\/\/img.f51.bdpcdn.net\/Assets\/Media\/2019\/05\/23\/41\/james.jpg",
                 "desc": "Th\u01b0\u01a1ng vu\u0323 chuy\u00ea\u0309n nh\u01b0\u01a1\u0323ng ti\u00ea\u0300n v\u00ea\u0323 Daniel James t\u01b0\u0300 Swansea sang Man United se\u0303 pha\u0309i hoa\u0303n la\u0323i vi\u0300 cha \u0111e\u0309 cu\u0309a c\u00e2\u0300u thu\u0309 na\u0300y m\u01a1\u0301i qua \u0111\u01a1\u0300i."
-            },
+            }
+        }]';
+        $someJSON2 = '[{
             "normal": [
                 {
                     "link": "\/de-gea-mo-toang-canh-cua-roi-man-united-2511471905.html",
@@ -86,16 +88,18 @@
             ]
         }]';
         $someArray = json_decode($someJSON, true);
+        $someArray2 = json_decode($someJSON2, true);
         echo "<pre>";
             var_dump($someArray);
         echo "</pre>";        // Dump all data of the Array
         echo $someArray[0]['hot']['link'];
     ?>
-    <?php foreach($someArray as $key => $value){ ?>
+
     <div class="container">
         <div class="row">
+            <?php foreach($someArray as $key => $value){ ?>
             <div class="col-sm-6">
-                <label for=""style="color:red; font-size: 30px;">Hot new</label>
+                <label for="" style="color:red; font-size: 30px;">Hot new</label>
                 <div class="title">
                     <h1><?php echo $value['hot']['title']; ?></h1>
                 </div>
@@ -104,19 +108,22 @@
                     <img src="" alt="">
                 </div>
             </div>
+            <?php } ?>
+            <?php foreach($someArray2 as $key2 => $value2){ ?>
             <div class="col-sm-6">
-                <label for="" >Tin cũ</label>
-                 <?php foreach($value as $k => $v){ ?>
-                        <?php foreach($v as $k1 => $v1){ ?>
+                <label for="">Tin cũ</label>
+                <?php foreach($value2 as $k => $v){ ?>
+                    <?php foreach($v as $k1 => $v1){ ?>
                 <div class="title">
                     <h3><?php echo $v1['title']; ?></h3>
                 </div>
-                    <?php } ?>    
-                 <?php } ?>
+                    <?php } ?>  
+                <?php } ?>
             </div>
+            <?php } ?>
         </div>
     </div>
-    <?php } ?>
+
 
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
